@@ -97,7 +97,7 @@ public class DirResourceSet extends AbstractFileResourceSet {
         checkPath(path);
         String webAppMount = getWebAppMount();
         WebResourceRoot root = getRoot();
-        if (path.startsWith(webAppMount)) {
+        if (isPathMounted(path, webAppMount)) {
             File f = file(path.substring(webAppMount.length()), false);
             if (f == null) {
                 return new EmptyResource(root, path);
@@ -118,7 +118,7 @@ public class DirResourceSet extends AbstractFileResourceSet {
     public String[] list(String path) {
         checkPath(path);
         String webAppMount = getWebAppMount();
-        if (path.startsWith(webAppMount)) {
+        if (isPathMounted(path, webAppMount)) {
             File f = file(path.substring(webAppMount.length()), true);
             if (f == null) {
                 return EMPTY_STRING_ARRAY;
@@ -151,7 +151,7 @@ public class DirResourceSet extends AbstractFileResourceSet {
         checkPath(path);
         String webAppMount = getWebAppMount();
         ResourceSet<String> result = new ResourceSet<>();
-        if (path.startsWith(webAppMount)) {
+        if (isPathMounted(path, webAppMount)) {
             File f = file(path.substring(webAppMount.length()), true);
             if (f != null) {
                 File[] list = f.listFiles();
@@ -223,7 +223,7 @@ public class DirResourceSet extends AbstractFileResourceSet {
             return false;
         }
         String webAppMount = getWebAppMount();
-        if (path.startsWith(webAppMount)) {
+        if (isPathMounted(path, webAppMount)) {
             File f = file(path.substring(webAppMount.length()), false);
             if (f == null) {
                 return false;
@@ -255,7 +255,7 @@ public class DirResourceSet extends AbstractFileResourceSet {
 
         File dest = null;
         String webAppMount = getWebAppMount();
-        if (path.startsWith(webAppMount)) {
+        if (isPathMounted(path, webAppMount)) {
             dest = file(path.substring(webAppMount.length()), false);
             if (dest == null) {
                 return false;
