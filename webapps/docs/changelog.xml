@@ -112,6 +112,11 @@
         dotall mode to avoid unexpected behaviour if the URL includes encoded
         line terminators. (markt)
       </fix>
+      <fix>
+        Ensure that an <code>IOException</code> during the reading of the
+        request triggers always error handling, regardless of whether the
+        application swallows the exception. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">

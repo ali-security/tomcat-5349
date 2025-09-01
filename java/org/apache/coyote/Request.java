@@ -786,6 +786,11 @@ public final class Request {
         }
         allDataReadEventSent.set(false);
 
+        // Clear notes to prevent information leakage
+        for (int i = 0; i < notes.length; i++) {
+            notes[i] = null;
+        }
+
         startTime = -1;
         threadId = 0;
     }
